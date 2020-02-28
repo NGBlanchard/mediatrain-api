@@ -5,6 +5,10 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const authRouter = require('./auth/auth-router')
+const unitsRouter = require('./units/units-router')
+const lessonsRouter = require('./lessons/lessons-router')
+
+
 
 const app = express()
 
@@ -16,6 +20,9 @@ app.use(morgan(morganOption))
 app.use(helmet())
 app.use(cors())
 app.use('/login', authRouter)
+app.use('/units', unitsRouter)
+app.use('/lessons', lessonsRouter)
+
 
 app.get('/', (req, res) => {
   res.send('MediaTrain API')
